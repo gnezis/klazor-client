@@ -64,7 +64,9 @@ class CoursePart:
 class Cell:
     def __init__(self, sequence):
         self.sequence = sequence
-
+        
+    def type(self):
+        return self.__class__
 
 class MarkdownCell(Cell):
     def __init__(self, sequence, text):
@@ -86,7 +88,7 @@ class GraphicMediaCell(MediaCell):
 
 
 class VideoCell(GraphicMediaCell):
-    pass
+
 
 
 class AudioCell(MediaCell):
