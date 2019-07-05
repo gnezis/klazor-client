@@ -1,3 +1,5 @@
+.idea/
+.vscode/
 # general things to ignore
 build/
 dist/
