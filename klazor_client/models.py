@@ -1,6 +1,3 @@
-from klazor_client import utils
-
-
 class Topic:
     def __init__(self, title):
         self.title = title
@@ -30,10 +27,6 @@ class Course(Item):
         self.instructors = instructors
         self.resources = resources
         self.parts = parts
-
-    @staticmethod
-    def from_dict(data):
-        return utils.course_from_dict(data)
 
 
 class Sheet(Item):

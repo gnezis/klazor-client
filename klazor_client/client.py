@@ -1,6 +1,6 @@
 import requests
 from klazor_client import settings
-from klazor_client.models import *
+from klazor_client import utils
 
 
 def config(*args, **kwargs):
@@ -21,4 +21,4 @@ def connect(login, password):
 def fetch_course(course_id):
     course_url = settings.API_URL + '/course/' + str(course_id)
     response = requests.get(course_url)
-    return Course.from_dict(response.json())
+    return utils.course_from_dict(response.json())
