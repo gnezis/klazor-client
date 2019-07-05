@@ -1,3 +1,6 @@
+from klazor_client import utils
+
+
 class Topic:
     def __init__(self, title):
         self.title = title
@@ -21,24 +24,28 @@ class File(Item):
 
 
 class Course(Item):
-    def __init__(self, title, topics, instructors, resources):
+    def __init__(self, title, topics, instructors, resources, parts):
         super().__init__(title)
         self.topics = topics
         self.instructors = instructors
         self.resources = resources
+        self.parts = parts
+
+    @staticmethod
+    def from_dict(data):
+        return utils.course_from_dict(data)
 
 
 class Sheet(Item):
-    def __init___(self, title, cells):
+    def __init__(self, title, cells):
         super().__init__(title)
         self.cells = cells
 
 
 class CourseElement(Sheet):
-    def __init___(self, title, cells, sequence, course_part):
+    def __init__(self, title, cells, sequence):
         super().__init__(title, cells)
         self.sequence = sequence
-        self.course_part = course_part
 
 
 class MoocCourse(Course):
@@ -53,36 +60,35 @@ class SchoolCourse(Course):
 
 
 class CoursePart:
-    def __init__(self, label, title, course, level, sequence):
+    def __init__(self, label, title, level, sequence, elements):
         self.label = label
         self.title = title
-        self.course = course
         self.level = level
         self.sequence = sequence
+        self.elements = elements
 
 
 class Cell:
-    def __init__(self, sequence, sheet):
+    def __init__(self, sequence):
         self.sequence = sequence
-        self.sheet = sheet
 
 
 class MarkdownCell(Cell):
-    def __init__(self, sequence, sheet, text):
-        super().__init__(sequence, sheet)
+    def __init__(self, sequence, text):
+        super().__init__(sequence)
         self.text = text
 
 
 class MediaCell(Cell):
-    def __init__(self, sequence, sheet, title, url):
-        super().__init__(sequence, sheet)
+    def __init__(self, sequence, title, url):
+        super().__init__(sequence)
         self.title = title
         self.url = url
 
 
 class GraphicMediaCell(MediaCell):
-    def __init__(self, sequence, sheet, title, url, scale):
-        super().__init__(sequence, sheet, title, url)
+    def __init__(self, sequence, title, url, scale):
+        super().__init__(sequence, title, url)
         self.scale = scale
 
 
