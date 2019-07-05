@@ -18,6 +18,18 @@ def connect(login, password):
     pass
 
 
+def fetch_courses():
+    courses_url = settings.API_URL + '/course/'
+    response = requests.get(courses_url)
+    return utils.courses_from_dict(response.json())
+
+
+def fetch_sheets():
+    sheets_url = settings.API_URL + '/sheet/'
+    response = requests.get(sheets_url)
+    return utils.sheets_from_dict(response.json())
+
+
 def fetch_course(id):
     course_url = settings.API_URL + '/course/' + str(id)
     response = requests.get(course_url)

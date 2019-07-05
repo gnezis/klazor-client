@@ -27,6 +27,20 @@ def course_from_dict(data):
     return models.Course(title, topics, instructors, resources, parts)
 
 
+def courses_from_dict(data):
+    courses = []
+    for course_data in data:
+        courses.append(course_from_dict(course_data))
+    return courses
+
+
+def sheets_from_dict(data):
+    sheets = []
+    for sheet_data in data:
+        sheets.append(sheet_from_dict(sheet_data))
+    return sheets
+
+
 def resource_from_dict(data):
     pass
 

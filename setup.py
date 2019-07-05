@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="klazor-client",
-    version="0.0.3",
+    version="0.0.4",
     #version="0.0.1",
     author="Wilfried L. Bounsi",
     author_email="wilcoln99@gmail.com",
