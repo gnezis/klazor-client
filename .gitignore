@@ -1,5 +1,6 @@
 .idea/
 .vscode/
+klazor_client/test.py
 # general things to ignore
 build/
 dist/
