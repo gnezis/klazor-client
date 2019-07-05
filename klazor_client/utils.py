@@ -64,6 +64,16 @@ def course_element_from_dict(data):
     return models.CourseElement(title, cells, sequence)
 
 
+def sheet_from_dict(data):
+    title = data['title']
+    cells = []
+
+    cells_data = data['cell_set']
+    for cell_dict in cells_data:
+        cells.append(cell_from_dict(cell_dict))
+    return models.Sheet(title, cells)
+
+
 def cell_from_dict(data):
     if 'text' in data:
         return markdowncell_from_dict(data)
