@@ -41,3 +41,14 @@ def fetch_sheet(id):
     response = requests.get(sheet_url)
     return utils.sheet_from_dict(response.json())
 
+
+def fetch_instructor(id):
+    instructor_url = settings.API_URL + '/instructor/' + str(id)
+    response = requests.get(instructor_url)
+    return utils.instructor_from_dict(response.json())
+
+
+def fetch_instructors():
+    instructor_url = settings.API_URL + '/instructor/'
+    response = requests.get(instructor_url)
+    return utils.instructors_from_dict(response.json())

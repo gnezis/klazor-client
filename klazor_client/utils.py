@@ -44,13 +44,26 @@ def sheets_from_dict(data):
 
 def resource_from_dict(data):
     id = data['id']
-    pass
+    url = data['file']
+    title = data['title']
+    return models.File(id, url, title)
 
 
 def instructor_from_dict(data):
     id = data['id']
+    name = data['name']
+    link = data['link']
+    if 'colloquial_name' in data:
+        colloquial_name = data['colloquial_name']
+        return models.School(id, name, link, colloquial_name)
+    return models.NotSchool(id, name, link)
 
-    pass
+
+def instructors_from_dict(data):
+    instructors = []
+    for instructor_data in data:
+        instructors.append(instructor_from_dict(instructor_data))
+    return instructors
 
 
 def topic_from_dict(data):
@@ -111,7 +124,6 @@ def markdowncell_from_dict(data):
     id = data['id']
     sequence = data['sequence']
     text = data['text']
-
     return models.MarkdownCell(id, sequence, text)
 
 
