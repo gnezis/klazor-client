@@ -87,13 +87,13 @@ class Cell(Model):
 
     @property
     def type(self):
-        if isinstance(self, id, MarkdownCell):
+        if isinstance(self, MarkdownCell):
             return 'markdown'
-        elif isinstance(self, id, VideoCell):
+        elif isinstance(self, VideoCell):
             return 'video'
-        elif isinstance(self, id, ImageCell):
+        elif isinstance(self, ImageCell):
             return 'image'
-        elif isinstance(self, id, AudioCell):
+        elif isinstance(self, AudioCell):
             return 'audio'
 
 
