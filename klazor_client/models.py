@@ -1,28 +1,46 @@
-class Topic:
-    def __init__(self, title):
+class Model:
+    def __init__(self, id):
+        self.id = id
+
+
+class Topic(Model):
+    def __init__(self, id, title):
+        super().__init__(id)
         self.title = title
 
 
-class Instructor:
-    def __init__(self, title, link):
-        self.title = title
+class Instructor(Model):
+    def __init__(self, id, name, link):
+        super().__init__(id)
+        self.name = name
         self.link = link
 
 
-class Item:
-    def __init__(self, title):
+class School(Instructor):
+    def __init__(self, id, name, link, colloquial_name):
+        super().__init__(id, name, link)
+        self.colloquial_name = colloquial_name
+
+
+class NotSchool(Instructor):
+    pass
+
+
+class Item(Model):
+    def __init__(self, id, title):
+        super().__init__(id)
         self.title = title
 
 
 class File(Item):
-    def __init__(self, url, title):
-        super().__init__(title)
+    def __init__(self, id, url, title):
+        super().__init__(id, title)
         self.url = url
 
 
 class Course(Item):
-    def __init__(self, title, topics, instructors, resources, parts):
-        super().__init__(title)
+    def __init__(self, id, title, topics, instructors, resources, parts):
+        super().__init__(id, title)
         self.topics = topics
         self.instructors = instructors
         self.resources = resources
@@ -30,14 +48,14 @@ class Course(Item):
 
 
 class Sheet(Item):
-    def __init__(self, title, cells):
-        super().__init__(title)
+    def __init__(self, id, title, cells):
+        super().__init__(id, title)
         self.cells = cells
 
 
 class CourseElement(Sheet):
-    def __init__(self, title, cells, sequence):
-        super().__init__(title, cells)
+    def __init__(self, id, title, cells, sequence):
+        super().__init__(id, title, cells)
         self.sequence = sequence
 
 
@@ -46,14 +64,15 @@ class MoocCourse(Course):
 
 
 class SchoolCourse(Course):
-    def __init__(self, title, topics, instructors, resources, year, semester):
-        super().__init__(title, topics, instructors, resources)
+    def __init__(self, id, title, topics, instructors, resources, year, semester):
+        super().__init__(id, title, topics, instructors, resources)
         self.year = year
         self.semester = semester
 
 
-class CoursePart:
-    def __init__(self, label, title, level, sequence, elements):
+class CoursePart(Model):
+    def __init__(self, id, label, title, level, sequence, elements):
+        super().__init__(id)
         self.label = label
         self.title = title
         self.level = level
@@ -61,38 +80,39 @@ class CoursePart:
         self.elements = elements
 
 
-class Cell:
-    def __init__(self, sequence):
+class Cell(Model):
+    def __init__(self, id, sequence):
+        super().__init__(id)
         self.sequence = sequence
 
     @property
     def type(self):
-        if isinstance(self, MarkdownCell):
+        if isinstance(self, id, MarkdownCell):
             return 'markdown'
-        elif isinstance(self, VideoCell):
+        elif isinstance(self, id, VideoCell):
             return 'video'
-        elif isinstance(self, ImageCell):
+        elif isinstance(self, id, ImageCell):
             return 'image'
-        elif isinstance(self, AudioCell):
+        elif isinstance(self, id, AudioCell):
             return 'audio'
 
 
 class MarkdownCell(Cell):
-    def __init__(self, sequence, text):
-        super().__init__(sequence)
+    def __init__(self, id, sequence, text):
+        super().__init__(id, sequence)
         self.text = text
 
 
 class MediaCell(Cell):
-    def __init__(self, sequence, title, url):
-        super().__init__(sequence)
+    def __init__(self, id, sequence, title, url):
+        super().__init__(id, sequence)
         self.title = title
         self.url = url
 
 
 class GraphicMediaCell(MediaCell):
-    def __init__(self, sequence, title, url, scale):
-        super().__init__(sequence, title, url)
+    def __init__(self, id, sequence, title, url, scale):
+        super().__init__(id, sequence, title, url)
         self.scale = scale
 
 

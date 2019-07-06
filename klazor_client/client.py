@@ -40,3 +40,4 @@ def fetch_sheet(id):
     sheet_url = settings.API_URL + '/sheet/' + str(id)
     response = requests.get(sheet_url)
     return utils.sheet_from_dict(response.json())
+
