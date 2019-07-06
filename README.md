@@ -15,7 +15,7 @@ kc.config(
     API_URL='http://127.0.0.1:8000/api', # should be 'http://klazor.com/api'
 )
 
-# fetch items by their id
+# fetch item by its id
 course = kc.fetch_course(1)
 sheet = kc.fetch_sheet(2)
 
