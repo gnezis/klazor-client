@@ -116,6 +116,8 @@ def cell_from_dict(data):
         return imagecell_from_dict(data)
     elif 'video' in data:
         return videocell_from_dict(data)
+    elif 'youtube' in data:
+        return youtubecell_from_dict(data)
     elif 'audio' in data:
         return audiocell_from_dict(data)
 
@@ -154,3 +156,12 @@ def videocell_from_dict(data):
     scale = data['scale']
 
     return models.VideoCell(id, sequence, title, url, scale)
+
+
+def youtubecell_from_dict(data):
+    id = data['id']
+    sequence = data['sequence']
+    title = data['title']
+    url = data['youtube']
+    scale = data['scale']
+    return models.YoutubeCell(id, sequence, title, url, scale)

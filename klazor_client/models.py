@@ -91,6 +91,8 @@ class Cell(Model):
             return 'markdown'
         elif isinstance(self, VideoCell):
             return 'video'
+        elif isinstance(self, YoutubeCell):
+            return 'youtube'
         elif isinstance(self, ImageCell):
             return 'image'
         elif isinstance(self, AudioCell):
@@ -125,4 +127,8 @@ class AudioCell(MediaCell):
 
 
 class ImageCell(GraphicMediaCell):
+    pass
+
+
+class YoutubeCell(GraphicMediaCell):
     pass
