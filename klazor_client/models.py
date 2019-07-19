@@ -39,12 +39,13 @@ class File(Item):
 
 
 class Course(Item):
-    def __init__(self, id, title, topics, instructors, resources, parts):
+    def __init__(self, id, title, topics, instructors, resources, parts, year):
         super().__init__(id, title)
         self.topics = topics
         self.instructors = instructors
         self.resources = resources
         self.parts = parts
+        self.year = year
 
 
 class Sheet(Item):
@@ -57,17 +58,6 @@ class CourseElement(Sheet):
     def __init__(self, id, title, cells, sequence):
         super().__init__(id, title, cells)
         self.sequence = sequence
-
-
-class MoocCourse(Course):
-    pass
-
-
-class SchoolCourse(Course):
-    def __init__(self, id, title, topics, instructors, resources, year, semester):
-        super().__init__(id, title, topics, instructors, resources)
-        self.year = year
-        self.semester = semester
 
 
 class CoursePart(Model):

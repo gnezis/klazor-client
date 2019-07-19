@@ -4,6 +4,7 @@ from klazor_client import models
 def course_from_dict(data):
     id = data['id']
     title = data['title']
+    year = data['year']
     topics = []
     instructors = []
     resources = []
@@ -25,7 +26,7 @@ def course_from_dict(data):
     for instructor_dict in instructors_data:
         instructors.append(instructor_from_dict(instructor_dict))
 
-    return models.Course(id, title, topics, instructors, resources, parts)
+    return models.Course(id, title, topics, instructors, resources, parts, year)
 
 
 def courses_from_dict(data):
