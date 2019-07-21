@@ -45,9 +45,10 @@ class Course(Item):
 
 
 class Sheet(Item):
-    def __init__(self, id, title, cells):
+    def __init__(self, id, title, cells, updated_at):
         super().__init__(id, title)
         self.cells = cells
+        self.updated_at = updated_at
 
 
 class CourseElement(Sheet):

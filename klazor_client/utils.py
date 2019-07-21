@@ -102,12 +102,13 @@ def course_element_from_dict(data):
 def sheet_from_dict(data):
     id = data['id']
     title = data['title']
+    updated_at = data['updated_at']
     cells = []
 
     cells_data = data['cell_set']
     for cell_dict in cells_data:
         cells.append(cell_from_dict(cell_dict))
-    return models.Sheet(id, title, cells)
+    return models.Sheet(id, title, cells, updated_at)
 
 
 def cell_from_dict(data):
