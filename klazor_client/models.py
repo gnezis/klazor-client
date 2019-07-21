@@ -22,10 +22,6 @@ class School(Instructor):
         self.colloquial_name = colloquial_name
 
 
-class NotSchool(Instructor):
-    pass
-
-
 class Item(Model):
     def __init__(self, id, title):
         super().__init__(id)

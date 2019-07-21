@@ -57,7 +57,7 @@ def instructor_from_dict(data):
     if 'colloquial_name' in data:
         colloquial_name = data['colloquial_name']
         return models.School(id, name, link, colloquial_name)
-    return models.NotSchool(id, name, link)
+    return models.Instructor(id, name, link)
 
 
 def instructors_from_dict(data):
