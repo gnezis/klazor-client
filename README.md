@@ -17,11 +17,11 @@ kc.config(
     PASSWORD='password' # your klazor account password
 )
 
-# fetch item by its id
+# fetch (your) item by its id
 course = kc.fetch_course(1)
 sheet = kc.fetch_sheet(2)
 
-# fetch all items 
+# fetch all (your) items 
 courses = kc.fetch_courses()
 sheets = kc.fetch_sheets()
 ```
