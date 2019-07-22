@@ -13,6 +13,8 @@ import klazor_client as kc
 
 kc.config(
     API_URL='http://127.0.0.1:8000/api', # should be 'http://klazor.com/api'
+    LOGIN='username', # your klazor account username
+    PASSWORD='password' # your klazor account password
 )
 
 # fetch item by its id
