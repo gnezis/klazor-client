@@ -14,11 +14,11 @@ def config(**kwargs):
                 settings.PASSWORD = value
 
 
-def fetch_courses():
-    courses_url = settings.API_URL + '/course/'
+def fetch_folders():
+    folders_url = settings.API_URL + '/folder/'
     auth_values = (settings.LOGIN, settings.PASSWORD)
-    response = requests.get(courses_url, auth=auth_values)
-    return utils.courses_from_dict(response.json())
+    response = requests.get(folders_url, auth=auth_values)
+    return utils.folders_from_dict(response.json())
 
 
 def fetch_sheets():
@@ -28,11 +28,11 @@ def fetch_sheets():
     return utils.sheets_from_dict(response.json())
 
 
-def fetch_course(id):
-    course_url = settings.API_URL + '/course/' + str(id)
+def fetch_folder(id):
+    folder_url = settings.API_URL + '/folder/' + str(id)
     auth_values = (settings.LOGIN, settings.PASSWORD)
-    response = requests.get(course_url, auth=auth_values)
-    return utils.course_from_dict(response.json())
+    response = requests.get(folder_url, auth=auth_values)
+    return utils.folder_from_dict(response.json())
 
 
 def fetch_sheet(id):
@@ -40,17 +40,3 @@ def fetch_sheet(id):
     auth_values = (settings.LOGIN, settings.PASSWORD)
     response = requests.get(sheet_url, auth=auth_values)
     return utils.sheet_from_dict(response.json())
-
-
-def fetch_instructor(id):
-    instructor_url = settings.API_URL + '/instructor/' + str(id)
-    auth_values = (settings.LOGIN, settings.PASSWORD)
-    response = requests.get(instructor_url, auth=auth_values)
-    return utils.instructor_from_dict(response.json())
-
-
-def fetch_instructors():
-    instructor_url = settings.API_URL + '/instructor/'
-    auth_values = (settings.LOGIN, settings.PASSWORD)
-    response = requests.get(instructor_url, auth=auth_values)
-    return utils.instructors_from_dict(response.json())

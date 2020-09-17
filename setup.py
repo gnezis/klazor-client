@@ -5,14 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="klazor-client",
-    version="0.0.4",
-    #version="0.0.1",
+    version="0.0.5",
     author="Wilfried L. Bounsi",
     author_email="wilcoln99@gmail.com",
     description="A package that enables your app to communicate with klazor in a client-server way",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/wilcoln/klazor-client",
+    url="https://github.com/gnezis/klazor-client",
     packages=setuptools.find_packages(),
     install_requires=[
           'requests',

@@ -2,69 +2,23 @@ class Model:
     def __init__(self, id):
         self.id = id
 
-
-class Topic(Model):
-    def __init__(self, id, title):
-        super().__init__(id)
-        self.title = title
-
-
-class Instructor(Model):
-    def __init__(self, id, name, link):
+class Item(Model):
+    def __init__(self, id, name):
         super().__init__(id)
         self.name = name
-        self.link = link
-
-
-class School(Instructor):
-    def __init__(self, id, name, link, colloquial_name):
-        super().__init__(id, name, link)
-        self.colloquial_name = colloquial_name
-
-
-class Item(Model):
-    def __init__(self, id, title):
-        super().__init__(id)
-        self.title = title
 
 
 class File(Item):
-    def __init__(self, id, url, title):
-        super().__init__(id, title)
+    def __init__(self, id, url, name):
+        super().__init__(id, name)
         self.url = url
 
-
-class Course(Item):
-    def __init__(self, id, title, topics, instructors, resources, parts, year):
-        super().__init__(id, title)
-        self.topics = topics
-        self.instructors = instructors
-        self.resources = resources
-        self.parts = parts
-        self.year = year
-
-
 class Sheet(Item):
-    def __init__(self, id, title, cells, updated_at):
-        super().__init__(id, title)
+    def __init__(self, id, name, cells, updated_at):
+        super().__init__(id, name)
         self.cells = cells
         self.updated_at = updated_at
 
-
-class CourseElement(Sheet):
-    def __init__(self, id, title, cells, sequence):
-        super().__init__(id, title, cells)
-        self.sequence = sequence
-
-
-class CoursePart(Model):
-    def __init__(self, id, label, title, level, sequence, elements):
-        super().__init__(id)
-        self.label = label
-        self.title = title
-        self.level = level
-        self.sequence = sequence
-        self.elements = elements
 
 
 class Cell(Model):
