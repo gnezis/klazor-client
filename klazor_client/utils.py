@@ -31,6 +31,8 @@ def cell_from_dict(data):
         return youtubecell_from_dict(data)
     elif 'audio' in data:
         return audiocell_from_dict(data)
+    elif data['type'] == 'MultipleChoiceInput':
+        return mcqcell_from_dict(data)
 
 
 def markdowncell_from_dict(data):
@@ -76,3 +78,16 @@ def youtubecell_from_dict(data):
     url = data['youtube']
     scale = data['scale']
     return models.YoutubeCell(id, sequence, title, url, scale)
+
+
+def mcqcell_from_dict(data):
+    id = data['id']
+    sequence = data['sequence']
+    propositions = [prop_from_dict(prop_data) for prop_data in data['proposition_set']]
+    return models.MultipleChoiceInputCell(id, sequence, propositions)
+
+def prop_from_dict(data):
+    id = data['id']
+    statement = data['statement']
+    is_true = data['is_true']
+    return models.Proposition(id, statement, is_true)

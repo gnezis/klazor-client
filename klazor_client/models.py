@@ -38,6 +38,8 @@ class Cell(Model):
             return 'image'
         elif isinstance(self, AudioCell):
             return 'audio'
+        elif isinstance(self, MultipleChoiceInputCell):
+            return 'mcq'
 
 
 class MarkdownCell(Cell):
@@ -45,6 +47,18 @@ class MarkdownCell(Cell):
         super().__init__(id, sequence)
         self.text = text
 
+
+class Proposition():
+    def __init__(self, id, statement, is_true):
+        self.id = id
+        self.statement = statement
+        self.is_true = is_true
+
+
+class MultipleChoiceInputCell(Cell):
+    def __init__(self, id, sequence, propositions):
+        super().__init__(id, sequence)
+        self.propositions = propositions
 
 class MediaCell(Cell):
     def __init__(self, id, sequence, title, url):
