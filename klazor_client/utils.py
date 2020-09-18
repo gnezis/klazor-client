@@ -31,7 +31,7 @@ def cell_from_dict(data):
         return youtubecell_from_dict(data)
     elif 'audio' in data:
         return audiocell_from_dict(data)
-    elif data['type'] == 'MultipleChoiceInput':
+    elif 'MultipleChoiceInput' in data['type']:
         return mcqcell_from_dict(data)
 
 
