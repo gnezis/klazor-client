@@ -21,10 +21,11 @@ def fetch_folders():
     return utils.folders_from_dict(response.json())
 
 
-def fetch_sheets():
-    sheets_url = settings.API_URL + '/sheet/'
+def fetch_sheets(path):
+    path=path.replace('/', ',')
+    url = settings.API_URL + f'/sheet/?path={path}'
     auth_values = (settings.LOGIN, settings.PASSWORD)
-    response = requests.get(sheets_url, auth=auth_values)
+    response = requests.get(url, auth=auth_values)
     return utils.sheets_from_dict(response.json())
 
 
